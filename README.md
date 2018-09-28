@@ -1,4 +1,4 @@
-git clone https://github.com/echochio-tw/zabbix-agent-centos7-ansible.git
+# ansible zabbix-agent in centos7
 
 hosts
 ```
