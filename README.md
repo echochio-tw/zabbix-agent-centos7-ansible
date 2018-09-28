@@ -1,25 +1,26 @@
-# for_widnows_update
+git clone https://github.com/echochio-tw/zabbix-agent-centos7-ansible.git
 
-run administrators .....
+hosts
+```
+[zabbix_agent]
+192.168.0.11
+```
+
+產生 ssh key
+```
+rm -rf /root/.ssh
+ssh-keygen -t rsa -f /root/.ssh/id_rsa -q -N ""
+```
+複製 key .....
+```
+yum install -y sshpass
+sshpass -p "vagrant" ssh-copy-id -i ~/.ssh/id_rsa.pub -o StrictHostKeyChecking=no root@192.168.0.11
+```
+
+#ansible -i hosts all -m ping
+
+#ansible-playbook zabbix_agent.yml
 
 
-Windows Update時卻出現錯誤代碼 80004002。可試試下列方式:
- 
 
-系統管理員身分執行 CMD
 
-於命令提示字元中，輸入指令 fsutil resource setautoreset true c:\，按下Enter
-
-於命令提示字元中，輸入指令 sfc /scannow
-
-於命令提示字元中，輸入指令 net stop wuauserv
-
-於命令提示字元中，輸入指令 net stop "Cryptographic Services" 
-
-於命令提示字元中，輸入指令 net stop bits
-
-C:\Windows\SoftwareDistribution  將它刪除
-
-C:\Windows\System32\Catroot2  將它刪除
-
-shutdown -r -t 0 重新啟動電腦
