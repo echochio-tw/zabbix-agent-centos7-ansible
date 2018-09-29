@@ -1,6 +1,6 @@
 # ansible zabbix-agent in centos7
 
-chenag hosts ....
+chenag hosts list ....
 ```
 [zabbix_agent]
 192.168.0.11
