@@ -6,12 +6,12 @@ chenag hosts list ....
 192.168.0.11
 ```
 
-產生 ssh key
+build ssh key
 ```
 rm -rf /root/.ssh
 ssh-keygen -t rsa -f /root/.ssh/id_rsa -q -N ""
 ```
-複製 key 到所有 client
+copy key to all client
 ```
 yum install -y sshpass
 sshpass -p "vagrant" ssh-copy-id -i ~/.ssh/id_rsa.pub -o StrictHostKeyChecking=no root@192.168.0.11
@@ -24,7 +24,7 @@ yum install -y python-pip python-netaddr ansible git
 pip install --upgrade pip
 pip install --upgrade Jinja2
 ```
-cheange zabbix_agentd.conf (Zabbix Server IP)
+cheange Zabbix Server IP as new noe 192.168.0.100 (zabbix_agentd.conf)
 ```
 sed -i 's/192.168.0.200/192.168.0.100/g' zabbix_agentd.conf
 ```
