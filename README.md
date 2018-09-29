@@ -31,7 +31,7 @@ sed -i 's/192.168.0.200/192.168.0.100/g' zabbix_agentd.conf
 
 # ansible -i hosts all -m ping
 
-# ansible-playbook zabbix_agent.yml
+# ansible-playbook -i hosts zabbix_agent.yml
 
 
 
