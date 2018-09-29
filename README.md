@@ -24,7 +24,7 @@ yum install -y python-pip python-netaddr ansible git
 pip install --upgrade pip
 pip install --upgrade Jinja2
 ```
-cheange zabbix_agentd.conf
+cheange zabbix_agentd.conf (Zabbix Server IP)
 ```
 sed -i 's/192.168.0.200/192.168.0.100/g' zabbix_agentd.conf
 ```
