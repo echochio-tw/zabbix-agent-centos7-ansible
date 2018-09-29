@@ -1,15 +1,15 @@
 ---
-
-- hosts: zabbix_agent
-  remote_user: root
+- name: Install zabbix_agent
+  hosts: zabbix_agent
+  become: true
   tasks:
-  - name: copy zabbix-release rpm 
+  - name: zabbix-release
     copy: src=./zabbix-release-3.4-1.el7.centos.noarch.rpm  dest=/root/zabbix-release-3.4-1.el7.centos.noarch.rpm seuser=system_u
   - name: install zabbix-release rpm from a local file
     yum:
       name: /root/zabbix-release-3.4-1.el7.centos.noarch.rpm
       state: present
-  - name: copy zabbix-agent rpm 
+  - name: zabbix-agent
     copy: src=./zabbix-agent-3.4.14-1.el7.x86_64.rpm dest=/root/zabbix-agent-3.4.14-1.el7.x86_64.rpm seuser=system_u
   - name: install zabbix-agent rpm from a local file
     yum:
@@ -17,8 +17,5 @@
       state: present
   - name: copy zabbix configuration file
     copy: src=./zabbix_agentd.conf dest=/etc/zabbix/zabbix_agentd.conf seuser=system_u
-  notify:
-  - Start Zabbix-agent
-  handlers:
   - name: Start zabbix-agent
-  service: name=zabbix-agent state=started enabled=yes
+    service: name=zabbix-agent state=started enabled=yes
