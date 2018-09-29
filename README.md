@@ -31,6 +31,7 @@ sed -i 's/192.168.0.200/192.168.0.100/g' zabbix_agentd.conf
 check client ...
 ```
 # ansible -i hosts all -m ping
+
 192.168.0.11 | SUCCESS => {
     "changed": false,
     "ping": "pong"
