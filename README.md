@@ -14,7 +14,7 @@ ssh-keygen -t rsa -f /root/.ssh/id_rsa -q -N ""
 copy key to all client
 ```
 yum install -y sshpass
-sshpass -p "vagrant" ssh-copy-id -i ~/.ssh/id_rsa.pub -o StrictHostKeyChecking=no root@192.168.0.11
+sshpass -p 'vagrant' ssh-copy-id -i ~/.ssh/id_rsa.pub -o StrictHostKeyChecking=no root@192.168.0.11
 ```
 
 install ansible
