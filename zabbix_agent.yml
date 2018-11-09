@@ -3,12 +3,6 @@
   hosts: zabbix_agent
   become: true
   tasks:
-  - name: zabbix-release
-    copy: src=./zabbix-release-3.4-1.el7.centos.noarch.rpm  dest=/root/zabbix-release-3.4-1.el7.centos.noarch.rpm seuser=system_u
-  - name: install zabbix-release rpm from a local file
-    yum:
-      name: /root/zabbix-release-3.4-1.el7.centos.noarch.rpm
-      state: present
   - name: zabbix-agent
     copy: src=./zabbix-agent-3.4.14-1.el7.x86_64.rpm dest=/root/zabbix-agent-3.4.14-1.el7.x86_64.rpm seuser=system_u
   - name: install zabbix-agent rpm from a local file
