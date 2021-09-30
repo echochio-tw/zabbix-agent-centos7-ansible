@@ -1,5 +1,9 @@
 # ansible zabbix-agent in centos7
 
+get zabbix-agent 
+```
+ git clone https://github.com/echochio-tw/zabbix-agent-centos7-ansible.git
+```
 chenag hosts list ....
 ```
 [zabbix_agent]
@@ -20,13 +24,11 @@ sshpass -p 'vagrant' ssh-copy-id -i ~/.ssh/id_rsa.pub -o StrictHostKeyChecking=n
 install ansible
 ```
 yum install -y epel-release
-yum install -y python-pip python-netaddr ansible git
-pip install --upgrade pip
-pip install --upgrade Jinja2
+yum install -y ansible
 ```
-cheange Zabbix Server IP as new noe 192.168.0.100 (zabbix_agentd.conf)
+cheange Zabbix Server IP as new noe 192.168.0.100 (zabbix_agent.yml)
 ```
-sed -i 's/192.168.0.200/192.168.0.100/g' zabbix_agentd.conf
+sed -i 's/192.168.0.200/192.168.0.100/g' zabbix_agent.yml
 ```
 check client ...
 ```
@@ -66,11 +68,10 @@ PLAY RECAP *********************************************************************
 
 check client
 ```
-ssh 192.168.0.11
-netstat -natp |grep zabbix_agentd
+ ansible -i hosts all  -m shell -a 'netstat -natp |grep zabbix_agentd'
 
-tcp        0      0 0.0.0.0:10050           0.0.0.0:*               LISTEN      31931/zabbix_agentd
-tcp6       0      0 :::10050                :::*                    LISTEN      31931/zabbix_agentd
+172.16.0.72 | CHANGED | rc=0 >>
+tcp        0      0 0.0.0.0:10050           0.0.0.0:*               LISTEN      9198/zabbix_agentd
+tcp6       0      0 :::10050                :::*                    LISTEN      9198/zabbix_agentd
+
 ```
-
-
