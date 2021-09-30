@@ -10,6 +10,6 @@
       name: /root/zabbix-agent2-5.0.15-1.el8.x86_64.rpm
       state: present
   - name: copy zabbix configuration file
-    copy: src=./zabbix_agentd.conf dest=/etc/zabbix/zabbix_agentd.conf seuser=system_u
+    copy: src=./zabbix_agentd2.conf dest=/etc/zabbix/zabbix_agentd2.conf seuser=system_u
   - name: Start zabbix-agent
     service: name=zabbix-agent state=started enabled=yes
