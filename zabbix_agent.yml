@@ -4,12 +4,12 @@
   become: true
   tasks:
   - name: zabbix-agent
-    copy: src=./zabbix-agent2-5.0.15-1.el8.x86_64.rpm dest=/root/zabbix-agent2-5.0.15-1.el8.x86_64.rpm seuser=system_u
+    copy: src=./zabbix-agent-5.0.9-1.el7.x86_64.rpm dest=/root/zabbix-agent-5.0.9-1.el7.x86_64.rpm seuser=system_u
   - name: install zabbix-agent rpm from a local file
     yum:
-      name: /root/zabbix-agent2-5.0.15-1.el8.x86_64.rpm
+      name: /root/zabbix-agent-5.0.9-1.el7.x86_64.rpm
       state: present
-  - name: copy zabbix configuration file
-    copy: src=./zabbix_agentd2.conf dest=/etc/zabbix/zabbix_agentd2.conf seuser=system_u
+  - name: replace in sql files
+    shell: sed -i 's/127.0.0.1/192.168.0.200/' /etc/zabbix/zabbix_agentd.conf
   - name: Start zabbix-agent
     service: name=zabbix-agent state=started enabled=yes
